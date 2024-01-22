@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Typography } from '@mui/material'
 import './banner.css'
+import Carousel from './Carousel'
 
 const Banner = () => {
   return (
@@ -30,6 +31,7 @@ const Banner = () => {
 
           </Typography>
         </div>
+        <Carousel />
       </Container>
 
     </div>
