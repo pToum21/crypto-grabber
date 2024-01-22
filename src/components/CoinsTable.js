@@ -46,14 +46,6 @@ export default function CoinsTable() {
     });
 
     const styles = {
-        row: {
-            backgroundColor: "#16171a",
-            cursor: "pointer",
-            "&:hover": {
-              backgroundColor: "#131111",
-            },
-            fontFamily: "Montserrat",
-          },
           pagination: {
             "& .MuiPaginationItem-root": {
               color: "gold",
@@ -113,7 +105,7 @@ export default function CoinsTable() {
                                                 fontFamily: "Montserrat",
                                             }}
                                             key={head}
-                                            align={head === "Coin" ? "" : "right"}
+                                            align={head === "Coin" ? "left" : "right"}
                                         >
                                             {head}
                                         </TableCell>
@@ -193,7 +185,7 @@ export default function CoinsTable() {
 
                 {/* Comes from @material-ui/lab */}
                 <Pagination
-                    count={(handleSearch()?.length / 10).toFixed(0)}
+                    count={Math.ceil(handleSearch()?.length / 10)}
                     style={{
                         padding: 20,
                         width: "100%",
