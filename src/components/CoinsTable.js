@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { CoinList } from '../config/api'
 import { CryptoState } from '../CryptoContext'
-import { Container, TextField, ThemeProvider, Typography, createTheme } from '@mui/material'
+import { Container, LinearProgress, Table, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography, createTheme } from '@mui/material'
 
 const CoinsTable = () => {
     const [coins, setCoins] = useState([])
@@ -42,17 +42,43 @@ const CoinsTable = () => {
                     style={{ margin: 18, fontFamily: "Montserrat" }}
                 >
                 </Typography>
-                <TextField 
-                label="Search for a Crypto Currency to grab.." 
-                variant='outlined'
-                style={{
-                    marginBottom: 20,
-                    width: "100%"
-                }}
-                onChange={(e)=>setSearch(e.target.value)}
+                <TextField
+                    label="Search for a Crypto Currency to grab.."
+                    variant='outlined'
+                    style={{
+                        marginBottom: 20,
+                        width: "100%"
+                    }}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
+                <TableContainer>
+                    {
+                        loading ? (
+                            <LinearProgress style={{ backgroundColor: 'gold' }} />
+                        ) : (
+                            <Table>
+                                <TableHead style={{ backgroundColor: 'gold' }}>
+                                    <TableRow>
+                                        {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                                            <TableCell
+                                                style={{
+                                                    color: "black",
+                                                    fontWeight: "700",
+                                                    fontFamily: "Montserrat"
+                                                }}
+                                                key={head}
+                                                align={head === 'Coin' ? "" : "right"}
+                                            >
+                                                {head}
+                                            </TableCell>
+                                        ))}
 
-                
+                                    </TableRow>
+                                </TableHead>
+                            </Table>
+                        )
+                    }
+                </TableContainer>
             </Container>
         </ThemeProvider>
     )
