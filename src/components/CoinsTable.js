@@ -45,6 +45,22 @@ export default function CoinsTable() {
         },
     });
 
+    const styles = {
+        row: {
+            backgroundColor: "#16171a",
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "#131111",
+            },
+            fontFamily: "Montserrat",
+          },
+          pagination: {
+            "& .MuiPaginationItem-root": {
+              color: "gold",
+            },
+          },
+      };
+
     const fetchCoins = async () => {
         setLoading(true);
         const { data } = await axios.get(CoinList(currency));
@@ -184,7 +200,7 @@ export default function CoinsTable() {
                         display: "flex",
                         justifyContent: "center",
                     }}
-                   
+                    sx={styles.pagination}
                     onChange={(_, value) => {
                         setPage(value);
                         window.scroll(0, 450);
