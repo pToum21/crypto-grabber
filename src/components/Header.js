@@ -1,9 +1,14 @@
 import { AppBar, Container, MenuItem, Select, ThemeProvider, Toolbar, Typography, createTheme } from "@mui/material";
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
+import { CryptoState } from "../CryptoContext";
 
 function Header() {
     const history = useNavigate();
+
+    const {currency, setCurrency} = CryptoState();
+
+    console.log(currency)
 
     const darkTheme = createTheme({
         palette: {
@@ -31,6 +36,8 @@ function Header() {
                                 height: 40,
                                 marginRight: 15,
                             }}
+                            value={currency}
+                            onChange={(e) => setCurrency(e.target.value)}
                         >
                             {/* USD */}
                             <MenuItem value={'USD'}>USD</MenuItem>
