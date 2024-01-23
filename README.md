@@ -11,7 +11,7 @@
 - used axios for ease of fetching data
 
 ## Deployed Application - 👾
-
+https://crypto-grabber.netlify.app/
 
 ## Table of Contents - 📋
 * [Installation](#installation---☢️)
