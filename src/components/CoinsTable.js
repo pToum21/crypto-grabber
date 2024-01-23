@@ -61,8 +61,14 @@ export default function CoinsTable() {
                     },
                 },
             },
+            MuiTableBody: {
+                root: {
+                    backgroundColor: "#333", // Set the background color for TableBody
+                },
+            },
         },
     });
+    
 
 
     const styles = {
@@ -147,7 +153,7 @@ export default function CoinsTable() {
                                         const profit = row.price_change_percentage_24h > 0;
                                         return (
                                             <TableRow
-                                                onClick={() => history.push(`/coins/${row.id}`)}
+                                                onClick={() => history(`/coins/${row.id}`)}
                                                 className={row}
                                                 key={row.name}
                                             >

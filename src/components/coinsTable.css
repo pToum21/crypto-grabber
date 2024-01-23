@@ -2,10 +2,11 @@
     background-color: #16171a;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
-    
-    &:hover {
-        background-color: #131111;
-    }  
+     
+}
+
+.row:hover {
+    background-color: #131111;
 }
 
 .white-text-label label {
