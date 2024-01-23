@@ -1,12 +1,13 @@
-import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReactHtmlParser from "react-html-parser";
+import parse from 'html-react-parser';
 import CoinInfo from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
 import { numberWithCommas } from "../components/CoinsTable";
 import { CryptoState } from "../CryptoContext";
+import './coinpage.css'
 
 const CoinPage = () => {
 
@@ -42,7 +43,7 @@ const CoinPage = () => {
           {coin?.name}
         </Typography>
         <Typography varient="subtitle1" className='coinpage-description' >
-          {ReactHtmlParser(coin?.description.en.split(". ")[0])}.
+          {(coin?.description.en.split(". ")[0])}.
         </Typography>
       </div>
       <CoinInfo coin={coin} />
