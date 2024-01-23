@@ -17,10 +17,19 @@
 .coinpage-heading {
     font-weight: bold;
     margin-bottom: 20;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .coinpage-description {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    padding: 25;
+    padding-bottom: 25;
+    padding-top: 0;
+    text-align: justify;
+}
+
+.coinpage-market-data {
     
 }
 

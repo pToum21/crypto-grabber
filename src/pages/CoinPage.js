@@ -1,32 +1,37 @@
-import { Typography } from "@mui/material";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { LinearProgress, Typography } from "@mui/material";
 import parse from 'html-react-parser';
 import CoinInfo from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
-import { numberWithCommas } from "../components/CoinsTable";
+import { numberWithCommas } from '../components/CoinsTable';
 import { CryptoState } from "../CryptoContext";
-import './coinpage.css'
+import './coinpage.css';
 
 const CoinPage = () => {
-
   const { id } = useParams();
   const [coin, setCoin] = useState();
 
   const { currency, symbol } = CryptoState();
 
   const fetchCoin = async () => {
-    const { data } = await axios.get(SingleCoin(id))
-
-    setCoin(data)
-  }
-
-  console.log(coin)
+    try {
+      const { data } = await axios.get(SingleCoin(id));
+      setCoin(data);
+    } catch (error) {
+      console.error("Error fetching coin data:", error);
+    }
+  };
 
   useEffect(() => {
     fetchCoin();
-  }, [])
+  }, []);
+
+  if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
+
+  const currentPrice = coin?.market_data.current_price[currency.toLowerCase()];
+  const marketCapRank = coin.market_cap_rank;
 
   return (
     <div className='coinpage-container'>
@@ -39,16 +44,61 @@ const CoinPage = () => {
             marginBottom: 20
           }}
         />
-        <Typography varient='h3' className="coinpage-heading">
+        <Typography variant='h3' className="coinpage-heading">
           {coin?.name}
         </Typography>
-        <Typography varient="subtitle1" className='coinpage-description' >
+        <Typography variant="subtitle1" className='coinpage-description' >
           {(coin?.description.en.split(". ")[0])}.
         </Typography>
+        <div className="coinpage-market-data">
+          <span style={{ display: 'flex', }}>
+            <Typography variant="h5" className="coinpage-heading">
+              Rank:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {marketCapRank !== undefined ? marketCapRank : 'N/A'}
+            </Typography>
+          </span>
+          <span style={{ display: 'flex', }}>
+            <Typography variant="h5" className="coinpage-heading">
+              Current Price:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {symbol}{" "}
+              {currentPrice !== undefined ? numberWithCommas(currentPrice) : 'N/A'}
+            </Typography>
+          </span>
+          <span style={{ display: 'flex', }}>
+            <Typography variant="h5" className="coinpage-heading">
+              asdasd
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+              variant="h5"
+              style={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              {marketCapRank !== undefined ? marketCapRank : 'N/A'}
+            </Typography>
+          </span>
+        </div>
       </div>
       <CoinInfo coin={coin} />
     </div>
-  )
-}
+  );
+};
 
-export default CoinPage
+export default CoinPage;
