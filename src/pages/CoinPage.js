@@ -32,6 +32,7 @@ const CoinPage = () => {
 
   const currentPrice = coin?.market_data.current_price[currency.toLowerCase()];
   const marketCapRank = coin.market_cap_rank;
+  const marketcap = coin?.market_data.market_cap[currency.toLowerCase()].toString().slice(0, -6);
 
   return (
     <div className='coinpage-container'>
@@ -82,7 +83,7 @@ const CoinPage = () => {
           </span>
           <span style={{ display: 'flex', }}>
             <Typography variant="h5" className="coinpage-heading">
-              asdasd
+              Market Cap: {" "}
             </Typography>
             &nbsp; &nbsp;
             <Typography
@@ -91,7 +92,8 @@ const CoinPage = () => {
                 fontFamily: 'Montserrat',
               }}
             >
-              {marketCapRank !== undefined ? marketCapRank : 'N/A'}
+              {symbol}{" "}
+              {marketcap !== undefined ? numberWithCommas(marketcap): 'N/A'}M
             </Typography>
           </span>
         </div>
