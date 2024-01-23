@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+
 .selectbutton {
     border: 1px solid gold;
     border-radius: 5px;
     padding: 10px;
     padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    
+}
+
+.selectbutton:hover {
+    background-color: gold;
+    color: black;
 }
