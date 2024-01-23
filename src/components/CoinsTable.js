@@ -38,20 +38,40 @@ export default function CoinsTable() {
 
     const darkTheme = createTheme({
         palette: {
-            primary: {
-                main: "#fff",
-            },
             type: "dark",
+        },
+        overrides: {
+            MuiTypography: {
+                root: {
+                    color: "#fff", // Set the default text color to white
+                },
+            },
+            MuiInputLabel: {
+                root: {
+                    color: "#fff", // Set the input label text color to white
+                },
+            },
+            MuiInput: {
+                root: {
+                    color: "#fff", // Set the input text color to white
+                },
+                underline: {
+                    "&:before": {
+                        borderBottom: "1px solid #fff", // Set the input underline color to white
+                    },
+                },
+            },
         },
     });
 
+
     const styles = {
-          pagination: {
+        pagination: {
             "& .MuiPaginationItem-root": {
-              color: "gold",
+                color: "gold",
             },
-          },
-      };
+        },
+    };
 
     const fetchCoins = async () => {
         setLoading(true);
@@ -85,9 +105,16 @@ export default function CoinsTable() {
                     Cryptocurrency Prices by Market Cap
                 </Typography>
                 <TextField
+                    className='white-text-label'
                     label="Search For a Crypto Currency.."
                     variant="outlined"
-                    style={{ marginBottom: 20, width: "100%" }}
+                    InputLabelProps={{
+                        style: { color: 'white' },
+                    }}
+                    InputProps={{
+                        style: { color: 'white' },
+                    }}
+                    style={{ marginBottom: 20, width: "100%", }}
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <TableContainer component={Paper}>

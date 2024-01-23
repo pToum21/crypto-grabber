@@ -7,3 +7,7 @@
         background-color: #131111;
     }  
 }
+
+.white-text-label label {
+    color: white;
+}
