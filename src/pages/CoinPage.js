@@ -93,7 +93,7 @@ const CoinPage = () => {
               }}
             >
               {symbol}{" "}
-              {marketcap !== undefined ? numberWithCommas(marketcap): 'N/A'}M
+              {marketcap !== undefined ? numberWithCommas(marketcap): 'N/A'}
             </Typography>
           </span>
         </div>

@@ -10,36 +10,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25;
+    margin-top: 25px;
     border-right: 2px solid grey;
 }
 
 .coinpage-heading {
     font-weight: bold;
-    margin-bottom: 20;
+    margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
 }
 
 .coinpage-description {
     width: 100%;
     font-family: 'Montserrat', sans-serif;
-    padding: 25;
-    padding-bottom: 25;
+    padding: 25px;
+    padding-bottom: 25px;
     padding-top: 0;
     text-align: justify;
 }
 
 .coinpage-market-data {
-    
+    align-self: flex-start;
+    padding: 25px;
+    padding-top: 10px;
+    width: 100%;
 }
 
+/* medium */
 @media (max-width: 960px) {
     .coinpage-container {
         flex-direction: column;
         align-items: center;
     }
+
     .coinpage-sidebar {
         width: 100%;
     }
 
+    .coinpage-market-data {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+/* small */
+@media (max-width: 645px) {
+    .coinpage-market-data {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* xsmall */
+@media (max-width: 310px) {
+    .coinpage-market-data {
+        align-items: start;
+    }
 }
