@@ -1,32 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'; 
-import { CryptoState } from '../CryptoContext'
-import {SingleCoin} from '../config/api'
-import axios from 'axios';
-import './coinpage.css'
+import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
+import CoinInfo from "../components/CoinInfo";
+import { SingleCoin } from "../config/api";
+import { numberWithCommas } from "../components/CoinsTable";
+import { CryptoState } from "../CryptoContext";
 
 const CoinPage = () => {
 
-const { id } = useParams();
-const [coin, setCoin] = useState();
+  const { id } = useParams();
+  const [coin, setCoin] = useState();
 
-const { currency, symbol } = CryptoState();
+  const { currency, symbol } = CryptoState();
 
-const fetchCoin = async () => {
-  const { data } = await axios.get(SingleCoin(id))
+  const fetchCoin = async () => {
+    const { data } = await axios.get(SingleCoin(id))
 
-  setCoin(data)
-}
+    setCoin(data)
+  }
 
-console.log(coin)
+  console.log(coin)
 
-useEffect(() => {
-  fetchCoin();
-}, [])
+  useEffect(() => {
+    fetchCoin();
+  }, [])
 
   return (
-    <div className='container'>
-      
+    <div className='coinpage-container'>
+      <div className='coinpage-sidebar'>
+        <img
+          src={coin?.image.large}
+          alt={coin?.name}
+          height="200"
+          style={{
+            marginBottom: 20
+          }}
+        />
+        <Typography varient='h3' className="coinpage-heading">
+          {coin?.name}
+        </Typography>
+        <Typography varient="subtitle1" className='coinpage-description' >
+          {ReactHtmlParser(coin?.description.en.split(". ")[0])}.
+        </Typography>
+      </div>
+      <CoinInfo coin={coin} />
     </div>
   )
 }

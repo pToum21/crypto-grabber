@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+
+.coinpage-container {
+    display: flex;
+
+}
+
+.coinpage-sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25;
+    border-right: 2px solid grey;
+}
+
+.coinpage-heading {
+    font-weight: bold;
+    margin-bottom: 20;
+    font-family: Montserrat;
+}
+
+.coinpage-description {
+    
+}
+
+@media (max-width: 960px) {
+    .coinpage-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .coinpage-sidebar {
+        width: 100%;
+    }
+
+}
