@@ -27,7 +27,7 @@ they must run rpm init -y and npm i to install dependiences used when creating t
  You must run npm i to download the correct packages.
 
 ## Preview Photo
-
+![Crypto Grabber](https://github.com/pToum21/crypto-grabber-repo/assets/138056441/083591c5-4752-4244-98d2-295ac735bc39)
 
 ## Qustions - ❓
 Feel Free to contact me at pey2moo1@gmail.com or [ptoum21](https://github.com/ptoum21).
